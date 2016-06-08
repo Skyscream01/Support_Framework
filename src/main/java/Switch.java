@@ -9,10 +9,10 @@ import java.util.ArrayList;
 /**
  * Created by yauhen.bialiayeu on 06.06.2016.
  */
-public class Switch {
+public class Switch extends Utils {
     public static  ArrayList<String> winHandles = new ArrayList<String>();
 
-    public static void createNewTab(WebDriver driver) {
+    public static void createNewTab() {
         if (winHandles.size()==0)
             winHandles.add(driver.getWindowHandle());
         WebElement body = driver.findElement(By.xpath("//body"));
@@ -22,23 +22,23 @@ public class Switch {
         winHandles.add(driver.getWindowHandle());
     }
 
-    public static void switchToWindow(WebDriver driver, int window) {
+    public static void switchToWindow(int window) {
         driver.switchTo().window(winHandles.get(window));
     }
 
-    public static void closeTab(WebDriver driver, int window) {
+    public static void closeTab(int window) {
         winHandles.remove(window);
         driver.close();
     }
 
-    public static void switchToNewWindow(WebDriver driver) {
+    public static void switchToNewWindow() {
         for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
         }
         winHandles.add(driver.getWindowHandle());
     }
 
-    public static void addWindow(WebDriver driver) {
+    public static void addWindow() {
         winHandles.add(driver.getWindowHandle());
     }
 }

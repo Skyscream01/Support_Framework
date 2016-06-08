@@ -12,10 +12,10 @@ import java.util.List;
 /**
  * Created by yauhen.bialiayeu on 06.06.2016.
  */
-public class Waiting {
+public class Waiting extends Utils {
 
     // Wait for JS is ready
-    public static void waitForBrowserReady(WebDriver driver) {
+    public static void waitForBrowserReady() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
         // wait for jQuery to load
@@ -45,26 +45,26 @@ public class Waiting {
     }
 
     // Wait for element disappear. In most of cases should be applied before waitForBrowserReady method.
-    public static void waitTillElementDisappear(WebDriver driver, By locator) {
+    public static void waitTillElementDisappear(By locator) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
     // -//- for WebElement. Less performance.
-    public static void waitTillElementDisappear(WebDriver driver, WebElement element) {
+    public static void waitTillElementDisappear(WebElement element) {
         List<WebElement> list = new ArrayList<WebElement>();
         list.add(element);
         new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfAllElements(list));
     }
     // Wait for element is clickable
-    public static void waitTillElementAppear(WebDriver driver, By locator) {
+    public static void waitTillElementAppear(By locator) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public static void waitTillElementAppear(WebDriver driver,WebElement element) {
+    public static void waitTillElementAppear(WebElement element) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(element));
     }
 
     // Wait for Ajax requests are completed
-    public static void waitAjaxIsCompleted(WebDriver driver) {
+    public static void waitAjaxIsCompleted() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
         // wait for Ajax
